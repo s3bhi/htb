@@ -1,0 +1,38 @@
+HTB - SAU - LINUX - EASY
+
+# NMAP SCAN
+-------x--------------x-------x
+sudo nmap -A -v (M.IP) -Pn
+-------x--------------x-------x
+In results there is port 22,80,55555 open
+when we try to open port 80 which is http its not opening
+lets try with port 55555
+In search engine search for M.IP:55555
+It will open a page,
+-------x--------------x-------x
+Lets create a new basket named htb
+Down in website, you can see
+powered by request-basket
+
+# Request-Basket Exploitation
+Lets search the powered by and version number github in google
+In results you can see CVE (github page)
+-------x--------------x-------x
+https://gist.github.com/b33t1e/3079c10c88cad379fb166c389ce3b7b3
+-------x--------------x-------x
+DOWN THERE will be [Attack Vectors]
+-------x--------------x-------x
+[Attack Vectors]
+POC: POST /api/baskets/{name} API with payload - {"forward_url": "http://127.0.0.1:80/test","proxy_response": false,"insecure_tls": false,"expand_path": true,"capacity": 250}
+details can be seen: https://notes.sjtu.edu.cn/s/MUUhEymt7
+-------x--------------x-------x
+copy http://127.0.0.1:80/ this
+In basket go to settings
+and paste it in forward url
+Tick proxy response and expand forward path
+click apply
+-------x--------------x-------x
+There is a quote saying send request to this page,lets search it in new tab
+Down there we can see its powered by maltrail
+
+
